@@ -8,15 +8,15 @@ It provides a parser and an execution engine for the [Sigma detection format][si
 ## Install
 
 ```shell
-bun add sigma-ts
+bun add @d4n5h/sigma-ts
 ```
 Or with npm:
 ```shell
-npm install sigma-ts
+npm install @d4n5h/sigma-ts
 ```
 Or with yarn:
 ```shell
-yarn add sigma-ts
+yarn add @d4n5h/sigma-ts
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ yarn add sigma-ts
 Here's a basic example of how to parse a rule and match it against a log entry:
 
 ```typescript
-import { parseRule, type LogEntry } from "sigma-ts";
+import { parseRule, type LogEntry } from "@d4n5h/sigma-ts";
 
 const ruleYaml = `
 title: My example rule
