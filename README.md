@@ -1,6 +1,6 @@
 # sigmalite-ts
 
-[![Tests](https://github.com/d4n5h/sigma-ts/actions/workflows/test.yml/badge.svg)](https://github.com/d4n5h/sigma-ts/actions/workflows/test.yml)
+[![Tests](https://github.com/d4n5h/sigmalite-ts/actions/workflows/test.yml/badge.svg)](https://github.com/d4n5h/sigmalite-ts/actions/workflows/test.yml)
 
 Package `sigmalite-ts` is a TypeScript port of the Go library [`github.com/runreveal/sigmalite`][sigmalite-go].
 It provides a parser and an execution engine for the [Sigma detection format][sigma-format].
