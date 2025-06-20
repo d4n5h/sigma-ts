@@ -1,9 +1,7 @@
 import { test, expect } from "@jest/globals";
 import * as fs from "fs";
 import * as path from "path";
-import { parseRule } from "../src/lib/parse";
-import type { LogEntry, MatchOptions } from "../src/lib/types";
-import "../src/lib/eval"; // to load the method implementations
+import { type LogEntry, type MatchOptions, parseRule } from "../src/";
 
 const testDataDir = path.join("tests", "testdata");
 

@@ -15,7 +15,7 @@ import {
   OrExpr,
   NotExpr,
   SearchAtom,
-} from './types';
+} from './eval';
 import { SigmaDate } from './date';
 import { SigmaError, SigmaAggregationNotSupportedError } from './errors';
 import { listOfStrings } from './utils';

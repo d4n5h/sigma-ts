@@ -1,4 +1,32 @@
 import { SigmaDate } from "./date";
+import { Address4, Address6 } from 'ip-address';
+
+// --- Utility functions for evaluation ---
+
+function escapeRegex(s: string): string {
+    return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function* windashPermute(input: string): Generator<string> {
+    const windowsParamDashes = ['-', '/', '–', '—', '―'];
+    const regex = /\B[-/]\b/;
+    for (const dash of windowsParamDashes) {
+        yield input.replace(regex, dash);
+    }
+}
+
+function* base64Permute(input: string): Generator<string> {
+    if (input.length === 0) return;
+    const inputBytes = Buffer.from(input);
+
+    for (let i = 0; i < 3; i++) {
+        const shifted = Buffer.concat([Buffer.alloc(i, ' '), inputBytes]);
+        const encoded = shifted.toString('base64');
+        const startOffset = [0, 2, 3][i]!;
+        const endOffset = [0, -3, -2][(inputBytes.length + i) % 3]!;
+        yield encoded.substring(startOffset, encoded.length + endOffset);
+    }
+}
 
 // From sigma.go
 
@@ -63,90 +91,4 @@ export interface MatchOptions {
 
 export interface Expr {
     exprMatches(entry: LogEntry, opts?: MatchOptions): boolean;
-}
-
-export class NamedExpr implements Expr {
-    name: string;
-    x: Expr;
-
-    constructor(name: string, x: Expr) {
-        this.name = name;
-        this.x = x;
-    }
-
-    exprMatches(entry: LogEntry, opts?: MatchOptions): boolean {
-        // This will be implemented in eval.ts
-        return this.x.exprMatches(entry, opts);
-    }
-}
-
-export class NotExpr implements Expr {
-    x: Expr;
-
-    constructor(x: Expr) {
-        this.x = x;
-    }
-
-    exprMatches(entry: LogEntry, opts?: MatchOptions): boolean {
-        // This will be implemented in eval.ts
-        return !this.x.exprMatches(entry, opts);
-    }
-}
-
-export class AndExpr implements Expr {
-    x: Expr[];
-
-    constructor(x: Expr[]) {
-        this.x = x;
-    }
-
-    exprMatches(entry: LogEntry, opts?: MatchOptions): boolean {
-        // This will be implemented in eval.ts
-        for (const expr of this.x) {
-            if (!expr.exprMatches(entry, opts)) {
-                return false;
-            }
-        }
-        return true;
-    }
-}
-
-export class OrExpr implements Expr {
-    x: Expr[];
-
-    constructor(x: Expr[]) {
-        this.x = x;
-    }
-
-    exprMatches(entry: LogEntry, opts?: MatchOptions): boolean {
-        // This will be implemented in eval.ts
-        for (const expr of this.x) {
-            if (expr.exprMatches(entry, opts)) {
-                return true;
-            }
-        }
-        return false;
-    }
-}
-
-export class SearchAtom implements Expr {
-    field?: string;
-    modifiers: string[];
-    patterns: string[];
-
-    constructor(field: string | undefined, modifiers: string[], patterns: string[]) {
-        this.field = field;
-        this.modifiers = modifiers;
-        this.patterns = patterns;
-    }
-
-    validate(): Error | null {
-        // This will be implemented in eval.ts
-        return null;
-    }
-
-    exprMatches(entry: LogEntry, opts?: MatchOptions): boolean {
-        // This will be implemented in eval.ts
-        return false;
-    }
 } 

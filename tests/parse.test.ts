@@ -1,11 +1,7 @@
 import { test, expect } from "@jest/globals";
 import * as fs from "fs";
 import * as path from "path";
-import { parseRule } from "../src/lib/parse";
-import { SigmaDate } from "../src/lib/date";
-import type { Rule } from "../src/lib/types";
-import { AndExpr, OrExpr, NotExpr, NamedExpr, SearchAtom } from "../src/lib/types";
-import "../src/lib/eval";
+import { type Rule, SigmaDate, parseRule, AndExpr, OrExpr, NotExpr, NamedExpr, SearchAtom } from "../src/";
 
 const testDataDir = path.join("tests", "testdata");
 
@@ -157,8 +153,8 @@ const testCases: TestCase[] = [
                     ])),
                     new NotExpr(new OrExpr([
                         new NamedExpr("filter_optional_defender", new AndExpr([
-                             new SearchAtom("Image", ["contains"], [":\\ProgramData\\Microsoft\\Windows Defender\\"]),
-                             new SearchAtom("Image", ["endswith"], ["\\MpCopyAccelerator.exe", "\\MsMpEng.exe"]),
+                            new SearchAtom("Image", ["contains"], [":\\ProgramData\\Microsoft\\Windows Defender\\"]),
+                            new SearchAtom("Image", ["endswith"], ["\\MpCopyAccelerator.exe", "\\MsMpEng.exe"]),
                         ])),
                         new NamedExpr("filter_optional_thor", new SearchAtom("Image", ["endswith"], ["\\thor64.exe", "\\thor.exe"])),
                     ])),
@@ -206,9 +202,9 @@ for (const tc of testCases) {
             const wantValue = (tc.want as any)[key];
             const gotValue = (got as any)[key];
             if (wantValue instanceof SigmaDate) {
-                 expect(gotValue.equals(wantValue)).toBe(true);
+                expect(gotValue.equals(wantValue)).toBe(true);
             } else {
-                 expect(gotValue).toEqual(wantValue);
+                expect(gotValue).toEqual(wantValue);
             }
         }
     });

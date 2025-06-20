@@ -7,12 +7,11 @@
     "moduleDetection": "force",
     "jsx": "react-jsx",
     "allowJs": true,
+    "esModuleInterop": true,
 
     // Bundler mode
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": false,
-    "noEmit": true,
     
     // Output configuration
     "outDir": "./dist",
@@ -29,8 +28,6 @@
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false,
     
-    // Added to fix AdmZip import issue
-    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*"],

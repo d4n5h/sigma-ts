@@ -1,6 +1,5 @@
-# `sigma-ts`
+# sigma-ts
 
-[![npm version](https://badge.fury.io/js/sigma-ts.svg)](https://badge.fury.io/js/sigma-ts)
 [![Tests](https://github.com/d4n5h/sigma-ts/actions/workflows/test.yml/badge.svg)](https://github.com/d4n5h/sigma-ts/actions/workflows/test.yml)
 
 Package `sigma-ts` is a TypeScript port of the Go library [`github.com/runreveal/sigmalite`][sigmalite-go].
