@@ -1,12 +1,12 @@
 {
-  "name": "@d4n5h/sigma-ts",
+  "name": "sigmalite-ts",
   "version": "0.1.0",
   "description": "A TypeScript implementation of Sigmalite rules",
   "author": "Daniel S",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/d4n5h/sigma-ts.git"
+    "url": "git+https://github.com/d4n5h/sigmalite-ts.git"
   },
   "type": "module",
   "main": "dist/index.js",

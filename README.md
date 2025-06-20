@@ -1,22 +1,22 @@
-# sigma-ts
+# sigmalite-ts
 
 [![Tests](https://github.com/d4n5h/sigma-ts/actions/workflows/test.yml/badge.svg)](https://github.com/d4n5h/sigma-ts/actions/workflows/test.yml)
 
-Package `sigma-ts` is a TypeScript port of the Go library [`github.com/runreveal/sigmalite`][sigmalite-go].
+Package `sigmalite-ts` is a TypeScript port of the Go library [`github.com/runreveal/sigmalite`][sigmalite-go].
 It provides a parser and an execution engine for the [Sigma detection format][sigma-format].
 
 ## Install
 
 ```shell
-bun add @d4n5h/sigma-ts
+bun add @d4n5h/sigmalite-ts
 ```
 Or with npm:
 ```shell
-npm install @d4n5h/sigma-ts
+npm install @d4n5h/sigmalite-ts
 ```
 Or with yarn:
 ```shell
-yarn add @d4n5h/sigma-ts
+yarn add @d4n5h/sigmalite-ts
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ yarn add @d4n5h/sigma-ts
 Here's a basic example of how to parse a rule and match it against a log entry:
 
 ```typescript
-import { parseRule, type LogEntry } from "@d4n5h/sigma-ts";
+import { parseRule, type LogEntry } from "sigmalite-ts";
 
 const ruleYaml = `
 title: My example rule
